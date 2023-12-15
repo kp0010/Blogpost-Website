@@ -38,7 +38,7 @@ def before_request():
 
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI', "sqlite:///posts.db")
 db = SQLAlchemy(app)
 
 
@@ -213,4 +213,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
